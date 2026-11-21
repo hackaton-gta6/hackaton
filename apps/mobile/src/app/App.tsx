@@ -7,6 +7,7 @@ import { LoginPage } from '../features/auth/LoginPage';
 import { AllSessionsPage } from '../features/cash-session/AllSessionsPage';
 import { HomePage } from '../features/cash-session/HomePage';
 import { OpenSessionPage } from '../features/cash-session/OpenSessionPage';
+import { BrandLockup } from '../ui/components/BrandLockup';
 
 export type Services = DataServices;
 type View = 'home' | 'open' | 'all-sessions';
@@ -89,7 +90,7 @@ export default function App() {
 
   return <div className="app-shell"><div className="app-frame">
     <aside className="sidebar">
-      <div className="brand"><div className="brand-mark">CC</div><div><div className="brand-name">Control de Caja</div><div className="brand-sub">Operaciones</div></div></div>
+      <BrandLockup compact />
       <div className="sidebar-nav"><div className="nav-label">Espacio de trabajo</div><nav className="nav-list">
         <button className={`nav-item ${view === 'home' ? 'active' : ''}`} onClick={() => setView('home')}><span className="nav-icon">⌂</span>Inicio</button>
         {canOpen && <button className={`nav-item ${view === 'open' ? 'active' : ''}`} onClick={() => setView('open')} disabled={Boolean(session)}><span className="nav-icon">＋</span>Abrir caja</button>}
