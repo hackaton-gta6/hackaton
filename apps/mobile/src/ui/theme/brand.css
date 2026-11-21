@@ -1,0 +1,8 @@
+/* Text-led identity. The former C/c emblem has been removed. */
+.brand-mark { display:none !important; }
+.brand-lockup { display:flex; align-items:center; gap:0; padding:0 8px; }
+.brand-lockup-compact { padding:0; }
+.brand-name { color:var(--ink); font-size:15px; font-weight:650; letter-spacing:-.025em; }
+.brand-sub { color:var(--muted); font-size:9px; text-transform:uppercase; letter-spacing:.12em; margin-top:3px; }
+.brand-lockup-cream .brand-name { color:var(--cream); }
+.brand-lockup-cream .brand-sub { color:rgba(243,238,227,.68); }

@@ -4,6 +4,7 @@ import { roleLabel } from '../../i18n/es';
 import { AppButton } from '../../ui/components/AppButton';
 import { PinPad } from '../../ui/components/PinPad';
 import { UserAvatar } from '../../ui/components/UserAvatar';
+import { BrandLockup } from '../../ui/components/BrandLockup';
 
 type Props = { users: User[]; onLogin: (userId: string, pin: string) => Promise<void>; error?: string; busy?: boolean };
 
@@ -16,7 +17,7 @@ export function LoginPage({ users, onLogin, error = '', busy = false }: Props) {
   };
   return <main className="auth-layout">
     <section className="auth-visual">
-      <div className="auth-brand"><div className="brand"><div className="brand-mark">CC</div><div><div className="brand-name" style={{ color: 'var(--cream)' }}>Control de Caja</div><div className="brand-sub" style={{ color: 'rgba(243,238,227,.48)' }}>Operaciones con claridad</div></div></div></div>
+      <div className="auth-brand"><BrandLockup tone="cream" /></div>
       <div className="auth-message"><div className="auth-kicker">Gestión de efectivo · Offline first</div><h1>Tu operación,<br />bajo control.</h1><p>Una visión clara de cada caja, cada apertura y cada movimiento. Incluso cuando la conexión no acompaña.</p></div>
       <div className="auth-footer">PLATAFORMA DE CONTROL OPERATIVO · DEMO</div>
     </section>
@@ -26,7 +27,7 @@ export function LoginPage({ users, onLogin, error = '', busy = false }: Props) {
         <div className="field-label">1. Selecciona tu perfil</div>
         <div className="user-select-list">
           {users.map((user) => <button type="button" key={user.id} className={`user-option ${selectedId === user.id ? 'selected' : ''}`} onClick={() => { setSelectedId(user.id); setPin(''); }}>
-            <UserAvatar name={user.name} color={user.avatarColor} /><span><span className="user-option-name">{user.name}</span><span className="user-option-role" style={{ display: 'block' }}>{roleLabel(user.role)}</span></span><span style={{ marginLeft: 'auto', color: selectedId === user.id ? 'var(--orange)' : 'transparent', fontWeight: 900 }}>●</span>
+            <UserAvatar name={user.name} color={user.avatarColor} /><span><span className="user-option-name">{user.name}</span><span className="user-option-role" style={{ display: 'block' }}>{roleLabel(user.role)}</span></span><span style={{ marginLeft: 'auto', color: selectedId === user.id ? 'var(--ink)' : 'transparent', fontWeight: 600 }}>✓</span>
           </button>)}
         </div>
         <div className="field-label" style={{ textAlign: 'center', marginTop: 20 }}>2. Introduce tu PIN de 4 dígitos</div>

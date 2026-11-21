@@ -49,7 +49,15 @@ Entre hitos se desarrolla en la PC con el navegador (`npm run dev`, modo móvil 
 - Un componente por archivo; las pantallas terminan en `Page`.
 - Ningún componente accede a Dexie ni a `fetch`: solo usa los **puertos** (`ports.ts`) a través de hooks.
 
-### 1.5 Trabajar con IA sin romper el contrato
+
+### 1.5 Criterios de experiencia Android
+- Diseñar primero para teléfono: navegación principal inferior, controles cómodos para el pulgar y respeto del área segura del sistema.
+- Los controles interactivos deben tener un área táctil cercana o superior a 48 dp; los estados activos deben comunicar forma, texto o icono, no solo color.
+- Priorizar una acción principal por pantalla. El saldo esperado, el estado de caja y la acción siguiente tienen prioridad visual sobre los metadatos.
+- Evitar fondos blancos dominantes y superficies neumórficas repetidas sin función. El relieve se reserva para controles, selectores y estados de interacción.
+- Probar en anchuras pequeñas y con teclado Android abierto; ningún formulario debe quedar tapado ni exigir desplazamiento horizontal.
+
+### 1.6 Trabajar con IA sin romper el contrato
 Al pedir código a una IA, pega siempre como contexto: `ports.ts`, `docs/contratos/modelo-de-datos.md` y el contrato que afecte a la tarea. Pide que genere **solo dentro de tu carpeta** (§2) y que no invente campos ni códigos de error. Revisa que respete la regla de no acceso directo a datos (§1.4).
 
 ---
@@ -167,7 +175,7 @@ La prueba pasa, los contratos están aprobados y ninguno de los dos queda bloque
 6. Tema claro/oscuro correcto y sin textos cortados en pantallas pequeñas.
 
 ### Tareas
-- **F-1.1 Sistema de diseño base.** `apps/mobile/src/ui/theme/variables.css` (tokens: paleta oscura azul-petróleo y variante clara, espaciado en múltiplos de 4, radios, sombras, escala tipográfica, colores semánticos de ingreso/egreso/advertencia/error), `src/ui/theme/theme.ts` (aplica claro/oscuro según el sistema y permite forzarlo), y fuente incluida en el paquete (sin depender de Google Fonts, por los bloqueos).
+- **F-1.1 Sistema de diseño base.** `apps/mobile/src/ui/theme/variables.css` (tokens: paleta crema `#F3EEE3` e Ink Black `#111111`, con Burnt Orange `#D9541E` reservado para acentos; blanco puro no dominante, espaciado en múltiplos de 4, radios, sombras, escala tipográfica y colores semánticos de ingreso/egreso/advertencia/error), `src/ui/theme/theme.ts` (aplica claro/oscuro según el sistema y permite forzarlo), y fuente incluida en el paquete (sin depender de Google Fonts, por los bloqueos).
 - **F-1.2 Componentes base** en `src/ui/components/`: `AppButton.tsx` (variantes primaria/secundaria/peligro, estado cargando), `Card.tsx`, `AppHeader.tsx`, `UserAvatar.tsx` (iniciales y color), `PinPad.tsx` (teclado numérico de 4 dígitos con puntos y borrar), `EmptyState.tsx`.
 - **F-1.3 Textos y errores.** `src/i18n/es.ts` (textos generales) y `src/i18n/error-codes.ts` (**un texto en español por cada `ErrorCode` del dominio**). Prueba en `src/i18n/error-codes.test.ts` que recorre todos los códigos exportados por el dominio y falla si falta alguno.
 - **F-1.4 Servicios y fakes.** `src/app/providers/ServicesProvider.tsx` (entrega `Services` por contexto; elige entre servicios reales o *fakes* con la variable `VITE_USE_FAKES`). `src/app/fakes/create-fake-services.ts`: implementaciones en memoria de los puertos con datos fijos, para desarrollar pantallas antes de que el Backend entregue.
