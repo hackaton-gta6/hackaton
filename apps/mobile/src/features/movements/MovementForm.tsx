@@ -9,7 +9,6 @@ type Props = { type: MovementType; sessionOpenedAt: string; onContinue: (draft: 
 
 export function MovementForm({ type, sessionOpenedAt, onContinue, onBack }: Props) {
   const [amount, setAmount] = useState('');
-  const [description, setDescription] = useState('');
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [time, setTime] = useState(() => new Date().toTimeString().slice(0, 5));
   const [reference, setReference] = useState('');
@@ -19,7 +18,7 @@ export function MovementForm({ type, sessionOpenedAt, onContinue, onBack }: Prop
     const parsed = parseAmount(amount);
     if (!parsed.ok) next.amountMinor = parsed.errors[0].code === 'AMOUNT_REQUIRED' ? 'Introduce el importe.' : parsed.errors[0].code === 'AMOUNT_FORMAT' ? 'Usa el formato 1.250,50.' : 'Introduce un importe válido y mayor que cero.';
     else if (parsed.value <= 0) next.amountMinor = 'El importe debe ser mayor que cero.';
-        const occurred = new Date(`${date}T${time}:00`);
+    const occurred = new Date(`${date}T${time}:00`);
     if (!date || !time || Number.isNaN(occurred.getTime())) next.occurredAt = 'Indica una fecha y hora válidas.';
     else if (occurred.getTime() > Date.now() + 5 * 60 * 1000) next.occurredAt = 'La fecha no puede estar en el futuro.';
     else if (occurred.getTime() < new Date(sessionOpenedAt).getTime()) next.occurredAt = 'La fecha no puede ser anterior a la apertura de la caja.';
