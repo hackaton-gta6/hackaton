@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import type { CSSProperties } from 'react';
 
 type Props = { title: string; eyebrow?: string; user?: { name: string; role: string; avatarColor: string }; action?: ReactNode };
 
