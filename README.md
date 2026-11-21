@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-Astro sirve la aplicación en el puerto 4321. Para compilar la versión web estática:
+Al crear un Codespace sobre la rama development, el contenedor instala las dependencias y arranca Astro automáticamente. El puerto 4321 se reenvía al navegador. También puedes ejecutar el comando manualmente. Astro sirve la aplicación en el puerto 4321. Para compilar la versión web estática:
 
 ```bash
 npm run build
