@@ -11,7 +11,7 @@ import { SessionSummaryCard } from './SessionSummaryCard';
 type Filter = 'all' | 'in' | 'out';
 type Props = { user: { name: string; role: string; avatarColor: string }; role: Role; session: CashSession; movements: Movement[]; incomeMinor: number; expenseMinor: number; expectedMinor: number; onAdd: () => void; onSelect: (movement: Movement) => void; readOnly?: boolean; preview: boolean };
 
-export function MovementsPage({ user, role, session, movements, incomeMinor, expenseMinor, expectedMinor, onAdd, onSelect, readOnly = false, preview }: Props) {
+export function MovementsPage({ user, session, movements, incomeMinor, expenseMinor, expectedMinor, onAdd, onSelect, readOnly = false, preview }: Props) {
   const [filter, setFilter] = useState<Filter>('all');
   const [typeFilter, setTypeFilter] = useState<MovementType | 'all'>('all');
   const filtered = useMemo(() => movements.filter((movement) => {
