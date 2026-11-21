@@ -547,3 +547,41 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--orange); ou
  .mobile-bottom-nav { left:10px; right:10px; bottom:calc(7px + env(safe-area-inset-bottom)); }
  .content-grid { grid-template-columns:1fr !important; }
 }
+
+/* Focused workflow refinements from on-device review. */
+.auth-layout { display:flex; min-height:100dvh; align-items:center; justify-content:center; padding:20px; }
+.auth-visual { display:none !important; }
+.auth-form-wrap, .auth-form-wrap-full { display:block; width:100%; max-width:460px; padding:0; }
+.auth-form { width:100%; max-width:none; margin:0 auto; }
+.auth-form h2 { margin:0 0 15px; font-size:23px; font-weight:650; }
+.auth-form > p { display:none; }
+.user-select-list { max-height:min(240px,29dvh); overflow-y:auto; overscroll-behavior:contain; padding-right:3px; margin:8px 0 10px; }
+.user-option { min-height:52px; padding:8px 3px; }
+.pin-dots { margin:9px 0 12px; gap:11px; }
+.pin-dot { width:9px; height:9px; }
+.pin-pad { max-width:228px; gap:6px; }
+.pin-key { min-height:40px; padding:7px; border-radius:9px; font-size:14px; }
+.auth-error { min-height:14px; margin:4px 0; }
+.auth-form .btn-block { margin-top:4px; min-height:44px; }
+.movement-direction-tabs { display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; margin:0 0 15px; border:1px solid var(--line); border-radius:11px; background:var(--cream-deep); }
+.movement-direction-tabs button { min-height:42px; border:0; border-radius:8px; background:transparent; color:var(--muted); font-size:13px; font-weight:600; }
+.movement-direction-tabs button.active { color:var(--ink); background:var(--paper); box-shadow:0 1px 3px rgba(23,22,19,.12); }
+.movement-type-group { margin:0; }
+.movement-group-title { display:none; }
+.movement-type-option { min-height:58px; padding:10px 12px; }
+.movement-type-copy small { display:none; }
+.movement-type-grid { gap:7px; }
+.movement-side-column { gap:12px; }
+.movement-side-column > .panel-card.paper { padding:14px; }
+.movement-add-bottom { margin-top:14px; }
+@media (max-width:650px) {
+ .auth-layout { align-items:flex-start; padding:max(16px,env(safe-area-inset-top)) 18px calc(12px + env(safe-area-inset-bottom)); }
+ .auth-form-wrap { padding:0; }
+ .auth-form h2 { font-size:22px; margin-bottom:12px; }
+ .user-select-list { max-height:min(208px,26dvh); }
+ .user-option { min-height:48px; }
+ .pin-pad { max-width:210px; gap:5px; }
+ .pin-key { min-height:37px; padding:5px; }
+ .pin-dots { margin:7px 0 9px; }
+ .auth-form .btn-block { min-height:43px; }
+}
