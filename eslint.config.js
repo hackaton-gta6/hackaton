@@ -6,4 +6,8 @@ module.exports = [
   {
     languageOptions: { ecmaVersion: 2022, sourceType: 'commonjs' },
   },
+  {
+    files: ['**/*.mjs'],
+    languageOptions: { ecmaVersion: 2022, sourceType: 'module' },
+  },
 ];

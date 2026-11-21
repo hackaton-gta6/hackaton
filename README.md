@@ -1,30 +1,56 @@
 # Control de Caja
 
-Monorepo para una aplicación móvil offline-first de control de caja, con dominio compartido y un ERP simulador.
+Aplicación móvil offline-first para el control operativo de efectivo. El cliente está construido con React y Capacitor; Astro genera la capa web estática que carga la experiencia React como una isla de cliente. El servidor del repositorio es una **simulación del ERP**, no un sistema bancario ni un ERP real.
 
 ## Estructura
 
-- `packages/domain`: reglas, tipos, permisos y contrato de sincronización en TypeScript puro.
-- `apps/mobile`: cliente React + Capacitor con almacenamiento local Dexie.
-- `apps/server`: simulador ERP con Fastify y SQLite.
+- `packages/domain`: reglas, tipos, permisos y contratos compartidos.
+- `apps/mobile`: aplicación React + Astro + Capacitor, con almacenamiento local Dexie.
+- `apps/server`: servidor ERP simulado con Fastify y SQLite.
 
 ## Requisitos
 
-- Node.js 20 o superior
+- Node.js 22 o superior
 - npm 10 o superior
 - Android Studio y JDK 17 para generar la APK
 
 ## Inicio rápido
 
+Desde la raíz del repositorio:
+
 ```bash
 npm install
-npm run build
-npm test
-npm run lint
+npm run dev
 ```
 
-Consulte la carpeta `docs/` para la arquitectura, contratos, decisiones técnicas y guion de demostración.
+Astro sirve la aplicación en el puerto 4321. Para compilar la versión web estática:
+
+```bash
+npm run build
+```
+
+Para sincronizar la salida web con Android:
+
+```bash
+npm run build:android
+```
+
+## Usuarios de demostración
+
+| Perfil | PIN |
+|---|---|
+| Vendedor · Ana | `1234` |
+| Supervisor · Luis | `2345` |
+| Contabilidad · Marta | `3456` |
+
+Los PIN son exclusivamente de demostración. No reutilices estas credenciales en un entorno real.
+
+## Diseño
+
+La interfaz utiliza una paleta crema (`#F3EEE3`), negro tinta (`#111111`) y naranja quemado (`#D9541E`). Las superficies y controles emplean sombras neumórficas suaves, con contraste y estados visibles.
+
+Consulta `docs/plan/PLAN_FRONTEND.md` y `docs/plan/PLAN_BACKEND.md` antes de modificar contratos o archivos asignados al otro integrante.
 
 ## Flujo de Git
 
-Las propuestas se realizan mediante una rama desde `main` y un pull request. Los tags con formato `v*` generan una release con APK.
+El trabajo activo se desarrolla en `development` y entra a `main` mediante Pull Request revisado. Usa ramas `feat/*`, `fix/*` y `docs/*`, con commits `feat:`, `fix:`, `test:`, `docs:` o `chore:`.

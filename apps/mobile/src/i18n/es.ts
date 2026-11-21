@@ -1,0 +1,41 @@
+export const es = {
+  appName: 'Control de Caja',
+  roles: { cashier: 'Vendedor', supervisor: 'Supervisor', accountant: 'Contabilidad' },
+  errors: {
+    USER_NOT_FOUND: 'No encontramos este usuario.',
+    PIN_INVALID_FORMAT: 'El PIN debe tener 4 dígitos.',
+    PIN_WRONG: 'El PIN no es correcto.',
+    PIN_LOCKED: 'Has alcanzado el límite de intentos. Espera antes de volver a probar.',
+    PERMISSION_DENIED: 'Tu perfil no tiene permiso para realizar esta acción.',
+    AMOUNT_REQUIRED: 'Introduce el saldo inicial.',
+    AMOUNT_FORMAT: 'Usa el formato 1.250,50. La coma separa los decimales.',
+    AMOUNT_NOT_POSITIVE: 'El importe debe ser igual o mayor que cero.',
+    AMOUNT_TOO_LARGE: 'El importe supera el máximo permitido.',
+    OPENING_BALANCE_INVALID: 'Introduce un saldo inicial válido, igual o mayor que cero.',
+    SESSION_ALREADY_OPEN: 'Ya tienes una caja abierta.',
+    SESSION_NOT_FOUND: 'No encontramos la sesión de caja.',
+    SESSION_NOT_OPEN: 'Esta caja ya no está abierta.',
+    SESSION_NOT_OWNED: 'Esta caja no pertenece a tu usuario.',
+    SESSION_ALREADY_CLOSED: 'Esta caja ya está cerrada.',
+    MOVEMENT_TYPE_INVALID: 'El tipo de movimiento no es válido.',
+    MOVEMENT_TYPE_NOT_ALLOWED: 'Tu perfil no puede registrar este tipo de movimiento.',
+    FIELD_REQUIRED: 'Completa este campo.',
+    DESCRIPTION_TOO_SHORT: 'La descripción es demasiado corta.',
+    DESCRIPTION_TOO_LONG: 'La descripción supera el máximo permitido.',
+    DATE_IN_FUTURE: 'La fecha no puede estar en el futuro.',
+    DATE_BEFORE_SESSION: 'La fecha es anterior a la apertura de la caja.',
+    CURRENCY_MISMATCH: 'La moneda no coincide con la de la caja.',
+    MOVEMENT_NOT_FOUND: 'No encontramos el movimiento.',
+    COUNTED_INVALID: 'El efectivo contado no es válido.',
+    VARIANCE_NOTE_REQUIRED: 'Explica la diferencia antes de cerrar la caja.',
+    DENOMINATION_INVALID: 'El desglose de billetes no es válido.',
+    REVERSAL_REASON_REQUIRED: 'Indica el motivo de la anulación.',
+    REVERSAL_ALREADY_DONE: 'Este movimiento ya fue anulado.',
+    REVERSAL_OF_REVERSAL: 'No se puede anular un movimiento inverso.',
+    SYNC_ENTRY_NOT_FOUND: 'No encontramos el registro en la cola.',
+    SYNC_ENTRY_NOT_RETRYABLE: 'Este registro no admite reintento.',
+    UNEXPECTED: 'No se pudo completar la operación. Inténtalo de nuevo.'
+  }
+} as const;
+
+export function roleLabel(role: keyof typeof es.roles): string { return es.roles[role]; }
