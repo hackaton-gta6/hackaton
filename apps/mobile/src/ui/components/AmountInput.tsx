@@ -6,11 +6,7 @@ export function AmountInput({ value, onChange, error, disabled = false }: Props)
   const [focused, setFocused] = useState(false);
   const [display, setDisplay] = useState(value);
   useEffect(() => { if (!focused) setDisplay(value); }, [value, focused]);
-  const update = (raw: string) => {
-    const cleaned = raw.replace(/[^0-9,.]/g, '');
-    setDisplay(cleaned);
-    onChange(cleaned);
-  };
+  const update = (raw: string) => { setDisplay(raw); onChange(raw); };
   return <div>
     <label className="field-label" htmlFor="opening-amount">Saldo inicial</label>
     <div style={{ position: 'relative' }}>

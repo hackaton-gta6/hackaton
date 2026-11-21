@@ -12,7 +12,7 @@ Aplicación móvil offline-first para el control operativo de efectivo. El clien
 
 - Node.js 22 o superior
 - npm 10 o superior
-- Android Studio y JDK 17 para generar la APK
+- Android Studio y JDK 21 para generar la APK (Capacitor 7)
 
 ## Inicio rápido
 
@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-Astro sirve la aplicación en el puerto 4321. Para compilar la versión web estática:
+Al crear un Codespace sobre la rama development, el contenedor instala las dependencias y arranca Astro automáticamente. El puerto 4321 se reenvía al navegador. También puedes ejecutar el comando manualmente. Astro sirve la aplicación en el puerto 4321. Para compilar la versión web estática:
 
 ```bash
 npm run build
@@ -54,3 +54,17 @@ Consulta `docs/plan/PLAN_FRONTEND.md` y `docs/plan/PLAN_BACKEND.md` antes de mod
 ## Flujo de Git
 
 El trabajo activo se desarrolla en `development` y entra a `main` mediante Pull Request revisado. Usa ramas `feat/*`, `fix/*` y `docs/*`, con commits `feat:`, `fix:`, `test:`, `docs:` o `chore:`.
+
+## Probar en un teléfono Android
+
+Cada Pull Request dirigido a `development` genera una APK de depuración mediante el workflow **Android preview APK**:
+
+1. Abre el Pull Request en GitHub y entra en la pestaña **Checks**.
+2. Espera a que termine el trabajo **android-debug**.
+3. En la pestaña **Actions**, abre la ejecución del workflow y descarga el artefacto `control-de-caja-android-debug`.
+4. Extrae `app-debug.apk), envíalo al teléfono e instálalo. Android puede pedir autorización para instalar aplicaciones desde el navegador o gestor de archivos.
+5. Abre Control de Caja. Para probar esta entrega, utiliza los perfiles demo de arriba.
+
+También puedes generar el proyecto Android localmente con `npm run build:android` y abrirlo con `npx cap open android` desde `apps/mobile`. Necesitas Android Studio, el SDK y JDK 21.
+
+**Importante:** la apertura E2 sí utiliza la base local actual. Los movimientos y el cierre E3/E4 de esta entrega son una vista previa temporal; no persisten al reiniciar ni sustituyen las pruebas de aceptación cuando Backend complete B3 y B4.

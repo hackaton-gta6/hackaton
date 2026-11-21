@@ -4,6 +4,7 @@ import { roleLabel } from '../../i18n/es';
 import { AppButton } from '../../ui/components/AppButton';
 import { PinPad } from '../../ui/components/PinPad';
 import { UserAvatar } from '../../ui/components/UserAvatar';
+import { BrandLockup } from '../../ui/components/BrandLockup';
 
 type Props = { users: User[]; onLogin: (userId: string, pin: string) => Promise<void>; error?: string; busy?: boolean };
 
@@ -16,7 +17,7 @@ export function LoginPage({ users, onLogin, error = '', busy = false }: Props) {
   };
   return <main className="auth-layout">
     <section className="auth-visual">
-      <div className="auth-brand"><div className="brand"><div className="brand-mark">CC</div><div><div className="brand-name" style={{ color: 'var(--cream)' }}>Control de Caja</div><div className="brand-sub" style={{ color: 'rgba(243,238,227,.48)' }}>Operaciones con claridad</div></div></div></div>
+      <div className="auth-brand"><BrandLockup tone="cream" /></div>
       <div className="auth-message"><div className="auth-kicker">Gestión de efectivo · Offline first</div><h1>Tu operación,<br />bajo control.</h1><p>Una visión clara de cada caja, cada apertura y cada movimiento. Incluso cuando la conexión no acompaña.</p></div>
       <div className="auth-footer">PLATAFORMA DE CONTROL OPERATIVO · DEMO</div>
     </section>
