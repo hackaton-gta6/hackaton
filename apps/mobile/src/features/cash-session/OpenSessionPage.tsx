@@ -44,7 +44,7 @@ export function OpenSessionPage({ user, register, onBack, onOpened, openSession 
         <div className="form-stack">
           <div><label className="field-label">Caja asignada</label><div className="field" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 800 }}>{register?.name ?? 'Sin caja asignada'}<span style={{ color: 'var(--green)', fontSize: 10 }}>● Asignada</span></div><div className="field-hint">La caja viene definida por tu perfil y no puede cambiarse aquí.</div></div>
           <AmountInput value={amount} onChange={setAmount} error={error} />
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}><AppButton variant="secondary" onClick={onBack}>Cancelar</AppButton><AppButton onClick={submit} disabled={!amount.trim() || !register}>Revisar apertura ↗</AppButton></div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}><AppButton variant="secondary" onClick={onBack}>Cancelar</AppButton><AppButton onClick={submit} disabled={!register}>Revisar apertura ↗</AppButton></div>
         </div>
       </Card>
       <div className="stack">

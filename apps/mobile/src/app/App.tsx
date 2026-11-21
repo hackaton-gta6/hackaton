@@ -56,8 +56,12 @@ export default function App() {
     const result = await services.users.verifyPin(userId, pin);
     setBusy(false);
     if (!result.ok) {
-      const code = result.errors[0].code as keyof typeof es.errors;
-      setLoginError(es.errors[code] ?? 'No se pudo validar el acceso.');
+      const error = result.errors[0];
+      const code = error.code as keyof typeof es.errors;
+      const remaining = error.params?.remainingAttempts;
+      const seconds = error.params?.remainingSeconds;
+      const message = es.errors[code] ?? 'No se pudo validar el acceso.';
+      setLoginError(code === 'PIN_WRONG' && typeof remaining === 'number' ? `${message} Te quedan ${remaining} intentos.` : code === 'PIN_LOCKED' && typeof seconds === 'number' ? `${message} Tiempo restante: ${seconds} s.` : message);
       return;
     }
     setUser(result.value);
@@ -76,6 +80,7 @@ export default function App() {
   if (!user) return <LoginPage users={users} onLogin={login} error={loginError} busy={busy} />;
 
   const canViewAll = user.role === 'supervisor' || user.role === 'accountant';
+  const canOpen = user.role === 'cashier' || user.role === 'supervisor';
   const openSession = async (openingUser: User, amountMinor: number) => {
     const result = await services.sessions.openSession(openingUser, amountMinor);
     if (result.ok) setSession(result.value);
@@ -87,14 +92,14 @@ export default function App() {
       <div className="brand"><div className="brand-mark">CC</div><div><div className="brand-name">Control de Caja</div><div className="brand-sub">Operaciones</div></div></div>
       <div className="sidebar-nav"><div className="nav-label">Espacio de trabajo</div><nav className="nav-list">
         <button className={`nav-item ${view === 'home' ? 'active' : ''}`} onClick={() => setView('home')}><span className="nav-icon">⌂</span>Inicio</button>
-        <button className={`nav-item ${view === 'open' ? 'active' : ''}`} onClick={() => setView('open')} disabled={user.role === 'accountant' || Boolean(session)}><span className="nav-icon">＋</span>Abrir caja</button>
+        {canOpen && <button className={`nav-item ${view === 'open' ? 'active' : ''}`} onClick={() => setView('open')} disabled={Boolean(session)}><span className="nav-icon">＋</span>Abrir caja</button>}
         {canViewAll && <button className={`nav-item ${view === 'all-sessions' ? 'active' : ''}`} onClick={() => setView('all-sessions')}><span className="nav-icon">▤</span>Todas las cajas</button>}
       </nav></div>
       <div className="sidebar-bottom"><div className="connection-card"><div className="connection-title"><span className="connection-dot" />Datos en este dispositivo</div><p className="connection-note">Modo local activo. La sincronización con el ERP simulado llegará en su etapa correspondiente.</p></div><button className="nav-item" onClick={logout}><span className="nav-icon">↗</span>Cerrar sesión</button></div>
     </aside>
     <main className="main-panel">
-      {view === 'home' && <HomePage user={user} session={session} register={register} onOpen={() => setView('open')} onAllSessions={() => setView('all-sessions')} onLogout={logout} canViewAll={canViewAll} />}
-      {view === 'open' && <OpenSessionPage user={user} register={register} onBack={() => setView('home')} onOpened={() => setView('home')} openSession={openSession} />}
+      {view === 'home' && <HomePage user={user} session={session} register={register} onOpen={() => setView('open')} onAllSessions={() => setView('all-sessions')} onLogout={logout} canViewAll={canViewAll} canOpen={canOpen} />}
+      {view === 'open' && canOpen && !session && <OpenSessionPage user={user} register={register} onBack={() => setView('home')} onOpened={() => setView('home')} openSession={openSession} />}
       {view === 'all-sessions' && canViewAll && <AllSessionsPage services={services} user={user} onBack={() => setView('home')} />}
     </main>
   </div></div>;
