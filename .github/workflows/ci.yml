@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, development]
 
 jobs:
   quality:
@@ -14,7 +14,8 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      # npm install refreshes the lockfile while Astro is being introduced.
+      - run: npm install
       - run: npm run lint
       - run: npm test
       - run: npm run build
