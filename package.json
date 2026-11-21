@@ -7,7 +7,7 @@
     "dev": "npm run dev -w @control-de-caja/mobile",
     "server": "npm run dev -w @caja/server",
     "build": "npm run build -ws --if-present",
-    "build:android": "npm run build -w @control-de-caja/mobile && npx cap sync android",
+    "build:android": "npm run build -w @control-de-caja/mobile && npm run cap:sync -w @control-de-caja/mobile",
     "lint": "eslint .",
     "test": "npm run test -ws --if-present",
     "format": "prettier --write .",
