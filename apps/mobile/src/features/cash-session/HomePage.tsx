@@ -1,6 +1,5 @@
 import type { CashSession, Register, User } from '@caja/domain';
 import { formatAmount } from '@caja/domain';
-import { roleLabel } from '../../i18n/es';
 import { AppButton } from '../../ui/components/AppButton';
 import { AppHeader } from '../../ui/components/AppHeader';
 import { Card } from '../../ui/components/Card';
@@ -59,10 +58,6 @@ export function HomePage({ user, session, register, onOpen, onAllSessions, onLog
       <AppButton block onClick={onAllSessions}>Ver cajas</AppButton>
     </Card>}
 
-    <div className="home-quick-info">
-      <div><span>Perfil</span><strong>{roleLabel(user.role)}</strong></div>
-      <div><span>Movimientos</span><strong>{movementCount}</strong></div>
-    </div>
     {canViewAll && <button className="home-text-action" onClick={onAllSessions}>Consultar todas las cajas <span>→</span></button>}
   </div>;
 }
