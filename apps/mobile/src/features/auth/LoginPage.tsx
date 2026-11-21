@@ -4,7 +4,6 @@ import { roleLabel } from '../../i18n/es';
 import { AppButton } from '../../ui/components/AppButton';
 import { PinPad } from '../../ui/components/PinPad';
 import { UserAvatar } from '../../ui/components/UserAvatar';
-import { BrandLockup } from '../../ui/components/BrandLockup';
 
 type Props = { users: User[]; onLogin: (userId: string, pin: string) => Promise<void>; error?: string; busy?: boolean };
 
@@ -21,7 +20,7 @@ export function LoginPage({ users, onLogin, error = '', busy = false }: Props) {
         <h2>Acceder</h2>
         <div className="field-label">Perfil</div>
         <div className="user-select-list">
-          {users.slice(0, 4).map((user) => <button type="button" key={user.id} className={`user-option ${selectedId === user.id ? 'selected' : ''}`} onClick={() => { setSelectedId(user.id); setPin(''); }}>
+          {users.map((user) => <button type="button" key={user.id} className={`user-option ${selectedId === user.id ? 'selected' : ''}`} onClick={() => { setSelectedId(user.id); setPin(''); }}>
             <UserAvatar name={user.name} color={user.avatarColor} /><span><span className="user-option-name">{user.name}</span><span className="user-option-role" style={{ display: 'block' }}>{roleLabel(user.role)}</span></span><span style={{ marginLeft: 'auto', color: selectedId === user.id ? 'var(--ink)' : 'transparent', fontWeight: 600 }}>✓</span>
           </button>)}
         </div>
