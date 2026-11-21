@@ -160,7 +160,7 @@ export default function App() {
         {canViewAll && <button className={`nav-item ${view === 'all-sessions' ? 'active' : ''}`} onClick={() => navTo('all-sessions')}><span className="nav-icon">◫</span>Todas las cajas</button>}
         {canOpen && !session && <button className={`nav-item ${view === 'open' ? 'active' : ''}`} onClick={() => navTo('open')}><span className="nav-icon">＋</span>Abrir caja</button>}
       </nav></div>
-      <div className="sidebar-bottom"><div className="connection-card"><div className="connection-title"><span className="connection-dot" />Datos en este dispositivo</div><p className="connection-note">La apertura E2 es real. Movimientos y cierre E3/E4 están en modo de vista previa hasta integrar el Backend.</p></div><button className="nav-item" onClick={logout}><span className="nav-icon">↗</span>Cerrar sesión</button></div>
+      <div className="sidebar-bottom"><button className="nav-item" onClick={logout}><span className="nav-icon">↗</span>Cerrar sesión</button></div>
     </aside>
     <main className="main-panel">
       <div className="preview-global"><span>FRONTEND E3 / E4 · PREVIEW</span><span>Movimientos y cierres simulados · E2 sigue conectado a la base local</span></div>
