@@ -10,6 +10,7 @@ type Props = {
   register: Register | null;
   onOpen: () => void;
   onAllSessions: () => void;
+  onHistory: () => void;
   onLogout: () => void;
   onMovements: () => void;
   onClose: () => void;
@@ -20,7 +21,7 @@ type Props = {
   previewClosedSession?: CashSession | null;
 };
 
-export function HomePage({ user, session, register, onOpen, onAllSessions, onLogout, onMovements, onClose, canViewAll, canOpen, expectedBalanceMinor, movementCount, previewClosedSession }: Props) {
+export function HomePage({ user, session, register, onOpen, onAllSessions, onHistory, onLogout, onMovements, onClose, canViewAll, canOpen, expectedBalanceMinor, movementCount, previewClosedSession }: Props) {
   const closed = Boolean(previewClosedSession);
   const opened = Boolean(session && !closed);
 
@@ -45,7 +46,7 @@ export function HomePage({ user, session, register, onOpen, onAllSessions, onLog
       <div className="home-balance-label">Última operación</div>
       <h2 className="home-panel-title">Caja cerrada</h2>
       <p className="home-panel-copy">Puedes consultar el cierre desde el historial.</p>
-      <AppButton block variant="secondary" onClick={onAllSessions}>Ver historial</AppButton>
+      <AppButton block variant="secondary" onClick={onHistory}>Ver historial</AppButton>
     </Card> : canOpen ? <Card className="home-primary-panel home-open-panel">
       <div className="home-balance-label">Estado de caja</div>
       <h2 className="home-panel-title">Lista para abrir</h2>
