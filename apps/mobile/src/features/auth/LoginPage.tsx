@@ -27,7 +27,7 @@ export function LoginPage({ users, onLogin, error = '', busy = false }: Props) {
         <div className="field-label">1. Selecciona tu perfil</div>
         <div className="user-select-list">
           {users.map((user) => <button type="button" key={user.id} className={`user-option ${selectedId === user.id ? 'selected' : ''}`} onClick={() => { setSelectedId(user.id); setPin(''); }}>
-            <UserAvatar name={user.name} color={user.avatarColor} /><span><span className="user-option-name">{user.name}</span><span className="user-option-role" style={{ display: 'block' }}>{roleLabel(user.role)}</span></span><span style={{ marginLeft: 'auto', color: selectedId === user.id ? 'var(--orange)' : 'transparent', fontWeight: 900 }}>●</span>
+            <UserAvatar name={user.name} color={user.avatarColor} /><span><span className="user-option-name">{user.name}</span><span className="user-option-role" style={{ display: 'block' }}>{roleLabel(user.role)}</span></span><span style={{ marginLeft: 'auto', color: selectedId === user.id ? 'var(--ink)' : 'transparent', fontWeight: 600 }}>✓</span>
           </button>)}
         </div>
         <div className="field-label" style={{ textAlign: 'center', marginTop: 20 }}>2. Introduce tu PIN de 4 dígitos</div>
