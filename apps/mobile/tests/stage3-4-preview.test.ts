@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { MOVEMENT_TYPES, buildMovement, buildSession } from '@caja/domain';
+import { MOVEMENT_TYPES } from '@caja/domain';
+import { buildMovement, buildSession } from '@caja/domain/testing';
 import { movementTypeLabels } from '../src/i18n/movement-types';
 import { summarizePreview, varianceKind } from '../src/features/closing/closing-preview';
 
