@@ -168,7 +168,7 @@ export default function App() {
       {view === 'open' && canOpen && !session && <OpenSessionPage user={user} register={register} onBack={() => navTo('home')} onOpened={() => navTo('home')} openSession={openSession} />}
       {view === 'all-sessions' && canViewAll && <AllSessionsPage services={services} user={user} onBack={() => navTo('home')} />}
       {view === 'movements' && session && <MovementsPage user={currentUser} role={user.role} session={session} movements={movements} incomeMinor={summary.incomeMinor} expenseMinor={summary.expenseMinor} expectedMinor={summary.expectedBalanceMinor} onAdd={() => navTo('new-movement')} onSelect={(movement) => { setSelectedMovement(movement); navTo('movement-detail'); }} readOnly={previewClosed || user.role === 'accountant'} preview />}
-      {view === 'new-movement' && session && !previewClosed && canOpen && <NewMovementPage user={currentUser} role={user.role} onBack={() => navTo('movements')} onCreate={createMovement} />}
+      {view === 'new-movement' && session && !previewClosed && canOpen && <NewMovementPage user={currentUser} role={user.role} sessionOpenedAt={session.openedAt} onBack={() => navTo('movements')} onCreate={createMovement} />}
       {view === 'movement-detail' && selectedMovement && <MovementDetailPage movement={selectedMovement} user={user} onBack={() => navTo('movements')} />}
       {view === 'closing' && session && !previewClosed && canOpen && <ClosingPage user={user} session={session} movements={movements} onCancel={() => navTo('home')} onConfirm={completePreviewClosing} />}
       {view === 'closing-summary' && previewClosing && <ClosingSummaryPage closing={previewClosing} user={user} onHome={() => navTo('home')} onHistory={() => navTo('history')} />}
