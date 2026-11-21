@@ -26,7 +26,7 @@ export function MovementsPage({ user, role, session, movements, incomeMinor, exp
     return groups;
   }, {});
   return <div>
-    <AppHeader eyebrow="E3 · Actividad de caja" title="Movimientos" user={user} action={<AppButton variant="quiet" onClick={onAdd} disabled={readOnly}>＋ Registrar</AppButton>} />
+    <AppHeader eyebrow="E3 · Actividad de caja" title="Movimientos" user={user}  />
     {preview && <div className="preview-note"><span>Aviso</span> Los movimientos de esta versión son de prueba y todavía no se guardan.</div>}
     <div className="movement-layout">
       <div className="movement-main-column">
@@ -43,7 +43,6 @@ export function MovementsPage({ user, role, session, movements, incomeMinor, exp
       </div>
       <aside className="movement-side-column">
         <Card paper><div className="card-kicker">Sesión activa</div><h3 className="section-title" style={{ margin: '8px 0 14px' }}>Caja en curso</h3><div className="info-row"><span className="info-label">Apertura</span><span className="info-value">{new Intl.DateTimeFormat('es-CU', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Havana' }).format(new Date(session.openedAt))}</span></div><div className="info-row"><span className="info-label">Moneda</span><span className="info-value">{session.currency}</span></div><div className="info-row"><span className="info-label">Estado</span><span className="info-value">Abierta</span></div></Card>
-        <Card><div className="card-kicker">Regla de registro</div><h3 className="section-title" style={{ margin: '8px 0' }}>El efectivo manda</h3><p className="section-subtitle" style={{ lineHeight: 1.65 }}>El saldo esperado suma todos los movimientos locales, incluso los que todavía no se han sincronizado.</p><div className="info-row"><span className="info-label">Tu perfil</span><span className="info-value">{role === 'cashier' ? 'Vendedor' : role === 'supervisor' ? 'Supervisor' : 'Contabilidad'}</span></div></Card>
       </aside>
     </div>
   </div>;
