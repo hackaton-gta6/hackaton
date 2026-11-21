@@ -27,7 +27,7 @@ export function MovementsPage({ user, role, session, movements, incomeMinor, exp
   }, {});
   return <div>
     <AppHeader eyebrow="E3 · Actividad de caja" title="Movimientos" user={user} action={<AppButton variant="quiet" onClick={onAdd} disabled={readOnly}>＋ Registrar</AppButton>} />
-    {preview && <div className="preview-note"><span>VISTA DE DESARROLLO</span> Los movimientos de esta pantalla son temporales hasta integrar el repositorio del Backend.</div>}
+    {preview && <div className="preview-note"><span>Aviso</span> Los movimientos de esta versión son de prueba y todavía no se guardan.</div>}
     <div className="movement-layout">
       <div className="movement-main-column">
         <SessionSummaryCard incomeMinor={incomeMinor} expenseMinor={expenseMinor} expectedMinor={expectedMinor} />
