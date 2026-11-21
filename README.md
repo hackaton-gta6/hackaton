@@ -10,7 +10,7 @@ Aplicación móvil offline-first para el control operativo de efectivo. El clien
 
 ## Requisitos
 
-- Node.js 20 o superior
+- Node.js 22 o superior
 - npm 10 o superior
 - Android Studio y JDK 17 para generar la APK
 
@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-Astro sirve la aplicación en el puerto que indique la consola. Para compilar la versión web estática:
+Astro sirve la aplicación en el puerto 4321. Para compilar la versión web estática:
 
 ```bash
 npm run build
