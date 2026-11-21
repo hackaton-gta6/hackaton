@@ -1,29 +1,8 @@
-/* Brand system: one continuous C/c gesture framed as a folded banknote. */
-.brand-mark {
-  flex: 0 0 auto;
-  display: inline-grid;
-  place-items: center;
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--ink);
-  color: var(--cream);
-  box-shadow: 4px 5px 11px rgba(17,17,17,.16), -3px -3px 9px rgba(255,255,255,.5);
-}
-.brand-mark-ink { background: var(--cream-deep); color: var(--ink); }
-.brand-mark svg { display:block; }
-.brand-mark-bill { fill:none; stroke:currentColor; stroke-width:1.25; opacity:.34; }
-.brand-mark-main, .brand-mark-small {
-  fill:none;
-  stroke:currentColor;
-  stroke-width:4.3;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.brand-mark-small { stroke-width:3.5; }
-.brand-mark-detail { fill:none; stroke:var(--orange); stroke-width:2.1; stroke-linecap:round; opacity:.95; }
-.brand-lockup { padding:0 8px; }
-.brand-lockup .brand-name { color:var(--ink); }
-.brand-lockup-cream .brand-name { color:var(--cream); }
-.brand-lockup .brand-sub { color:var(--muted); }
-.brand-lockup-cream .brand-sub { color:rgba(243,238,227,.48); }
+/* Text-led identity. The former C/c emblem has been removed. */
+.brand-mark { display:none !important; }
+.brand-lockup { display:flex; align-items:center; gap:0; padding:0 8px; }
 .brand-lockup-compact { padding:0; }
+.brand-name { color:var(--ink); font-size:15px; font-weight:650; letter-spacing:-.025em; }
+.brand-sub { color:var(--muted); font-size:9px; text-transform:uppercase; letter-spacing:.12em; margin-top:3px; }
+.brand-lockup-cream .brand-name { color:var(--cream); }
+.brand-lockup-cream .brand-sub { color:rgba(243,238,227,.68); }
